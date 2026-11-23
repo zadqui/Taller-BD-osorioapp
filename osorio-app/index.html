@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transportadora Osorio · Flete de mercancía en Quintana Roo y Campeche</title>
+  <meta name="description" content="Flete de mercancía no peligrosa entre Quintana Roo y Campeche. Rastrea tu envío con tu código de seguimiento.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="l-wrap">
+    <nav class="l-nav" aria-label="Principal">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><i data-lucide="truck"></i></span>
+        <span>Transportadora Osorio<small>Flete de mercancía</small></span>
+      </a>
+      <div class="l-links" id="links">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo funciona</a>
+        <a href="#cobertura">Cobertura</a>
+      </div>
+      <a class="btn accent sm hide-sm" href="rastreo.html"><i data-lucide="search"></i>Rastrear envío</a>
+      <button class="icon-btn menu-toggle" id="menu" aria-label="Abrir menú" aria-expanded="false"><i data-lucide="menu"></i></button>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <span class="chip"><i><i data-lucide="map-pin"></i></i>Quintana Roo y Campeche</span>
+        <h1>Tu mercancía,<br>siempre <em>a la vista</em>.</h1>
+        <p class="lead">Recibimos tu carga en bodega, la enviamos en el siguiente viaje de tu ruta y registramos cada paso hasta la entrega.</p>
+        <form class="search-pill" id="f-hero" role="search">
+          <i data-lucide="search"></i>
+          <input name="codigo" placeholder="Tu código, ej. OSO-7K4M-91QX" aria-label="Código de seguimiento" autocomplete="off" maxlength="13">
+          <button class="btn accent">Rastrear</button>
+        </form>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <img class="hero-illus" src="assets/ilustraciones/logistics.svg" alt="">
+        <div class="hero-card">
+          <div class="p-row">
+            <span class="ico-tile asignada"><i data-lucide="route"></i></span>
+            <div><b class="mono">OSO-3P8R-62WN</b><small>Campeche → Playa del Carmen</small></div>
+          </div>
+          <div class="track">
+            <span class="node done"><i data-lucide="check"></i></span><span class="seg done"></span>
+            <span class="node now"><i data-lucide="route"></i></span><span class="seg"></span>
+            <span class="node"><i data-lucide="truck"></i></span><span class="seg"></span>
+            <span class="node"><i data-lucide="package-check"></i></span>
+          </div>
+          <div class="track-labels"><span>Recibido</span><span>Asignado</span><span>En camino</span><span>Entregado</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="La empresa en números">
+      <div class="card stat reveal"><b>32 t</b><span>Capacidad por tráiler</span></div>
+      <div class="card stat reveal"><b>2</b><span>Bodegas: Cancún y Campeche</span></div>
+      <div class="card stat reveal"><b>6</b><span>Ciudades atendidas</span></div>
+      <div class="card stat reveal"><b>3</b><span>Formas de pago</span></div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="section-head reveal">
+        <h2>Un servicio de flete pensado para tu operación</h2>
+        <p>Transportamos mercancía no peligrosa con rutas fijas entre Quintana Roo y Campeche.</p>
+      </div>
+      <div class="services">
+        <article class="card service featured reveal"><span class="svc-ico"><i data-lucide="truck"></i></span><h3>Flete foráneo</h3><p>Tráileres de hasta 32 toneladas entre ciudades.</p></article>
+        <article class="card service reveal"><span class="svc-ico"><i data-lucide="boxes"></i></span><h3>Reparto local</h3><p>Unidades ligeras para entregar dentro de la ciudad.</p></article>
+        <article class="card service reveal"><span class="svc-ico"><i data-lucide="door-open"></i></span><h3>Domicilio u ocurrencia</h3><p>Te la llevamos o la recoges cuando te avisemos.</p></article>
+        <article class="card service reveal"><span class="svc-ico"><i data-lucide="wallet"></i></span><h3>Pago flexible</h3><p>Contado, crédito a 15 días o contra entrega.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="proceso">
+      <div class="section-head reveal">
+        <h2>Cuatro pasos que ves en tu rastreo</h2>
+        <p>Cada cambio de tu envío queda registrado y lo consultas con tu código.</p>
+      </div>
+      <div class="steps">
+        <article class="card step reveal"><span class="pill espera">Recibido</span><h3>Recepción en bodega</h3><p>Registramos tu mercancía y te damos tu código.</p></article>
+        <article class="card step reveal"><span class="pill asignada">Asignado</span><h3>Asignación a viaje</h3><p>Va en el siguiente viaje que llega a tu destino.</p></article>
+        <article class="card step reveal"><span class="pill transito">En camino</span><h3>Salida de la unidad</h3><p>La unidad sale y tu envío queda en ruta.</p></article>
+        <article class="card step reveal"><span class="pill entregada">Entregado</span><h3>Entrega</h3><p>Registramos la fecha y el lugar de entrega.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="cobertura">
+      <div class="section-head reveal">
+        <h2>Rutas activas</h2>
+        <p>Salen de nuestras bodegas en Cancún y Campeche.</p>
+      </div>
+      <div class="grid g-2">
+        <article class="card route-card reveal"><h3><i></i>Quintana Roo</h3><p class="muted">Sale de Bodega Cancún</p>
+          <div class="stops"><span>Cancún</span><i data-lucide="chevron-right"></i><span>Playa del Carmen</span><i data-lucide="chevron-right"></i><span>Chetumal</span></div></article>
+        <article class="card route-card alt reveal"><h3><i></i>Campeche</h3><p class="muted">Sale de Bodega Campeche</p>
+          <div class="stops"><span>Campeche</span><i data-lucide="chevron-right"></i><span>Ciudad del Carmen</span></div></article>
+      </div>
+    </section>
+
+    <section class="cta reveal">
+      <div>
+        <h2>¿Ya tienes tu código?</h2>
+        <p>Consulta tu envío sin llamar ni crear una cuenta.</p>
+        <form class="search-pill" id="f-cta" role="search">
+          <i data-lucide="search"></i>
+          <input name="codigo" placeholder="OSO-XXXX-XXXX" aria-label="Código de seguimiento" autocomplete="off" maxlength="13">
+          <button class="btn accent">Rastrear</button>
+        </form>
+      </div>
+      <img src="assets/ilustraciones/order-delivered.svg" alt="" aria-hidden="true">
+    </section>
+
+    <footer class="l-footer">
+      <div><b>Transportadora Osorio S.A. de C.V.</b><br>Calle 95 #538A, Melitón Salazar, Mérida, Yucatán.</div>
+      <div>© 2026 Transportadora Osorio</div>
+    </footer>
+  </div>
+
+  <script src="assets/vendor/lucide.min.js"></script>
+  <script src="js/nucleo.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

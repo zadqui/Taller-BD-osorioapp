@@ -1,0 +1,15 @@
+Recursos de terceros incluidos en assets/
+
+
+1. Iconos (assets/vendor/lucide.min.js)
+   Lucide v0.460.0
+   https://lucide.dev
+   Licencia ISC. Copyright (c) Lucide Contributors.
+
+2. Ilustraciones (assets/ilustraciones/*.svg)
+   unDraw · https://undraw.co · Licencia unDraw: uso libre, comercial o
+   personal, sin atribución. Recoloreadas al naranja de la marca.
+
+3. Fuentes (assets/fuentes/*.woff2)
+   Inter (The Inter Project Authors) y JetBrains Mono (JetBrains).
+   Ambas con licencia SIL Open Font License 1.1.

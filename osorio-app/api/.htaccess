@@ -1,0 +1,6 @@
+# Solo index.php responde; config y librerías no son accesibles desde la web.
+Options -Indexes
+
+<FilesMatch "^(config\.php|config\.ejemplo\.php)$">
+    Require all denied
+</FilesMatch>

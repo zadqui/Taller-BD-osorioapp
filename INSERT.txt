@@ -1,0 +1,48 @@
+INSERT INTO cliente (nombre_cliente, telefono_cliente) VALUES
+('Juan Perez', '9991234567'),
+('Maria Lopez', '9997654321'),
+('Carlos Ramirez', '9994567890'),
+('Ana Martinez', '9991112233'),
+('Luis Herrera', '9992223344'),
+('Fernanda Castro', '9993334455'),
+('Jorge Medina', '9994445566'),
+('Sofia Gomez', '9995556677');
+
+INSERT INTO ruta (nombre_ruta) VALUES
+('Ruta Quintana Roo (Cancun - Chetumal)'),
+('Ruta Campeche (Ciudad del Carmen)');
+
+INSERT INTO unidad (tipo_unidad, capacidad_toneladas) VALUES
+('Reparto local', 5.00),
+('Foraneo Trailer', 32.00),
+('Reparto local', 4.50),
+('Foraneo Trailer', 28.00),
+('Reparto local', 3.80),
+('Foraneo Trailer', 32.00);
+
+INSERT INTO viaje (id_ruta, id_unidad, fecha_salida, estado_viaje, carga_acumulada) VALUES
+(1, 2, '2024-03-20', 'Finalizado', 18.00),
+(2, 2, '2024-03-22', 'Programado', 22.00),
+(1, 1, '2024-03-25', 'En transito', 4.20),
+(2, 4, '2024-03-26', 'Programado', 20.50),
+(1, 2, '2024-03-27', 'Finalizado', 25.00),
+(2, 3, '2024-03-28', 'En bodega', 3.50),
+(1, 4, '2024-03-29', 'Programado', 30.00);
+
+INSERT INTO pago (id_cliente, tipo_pago, monto_pago, fecha_vencimiento, fecha_pago) VALUES
+(1, 'Contado', 4500.00, '2024-03-15', '2024-03-15'),
+(2, 'Credito 15 dias', 12000.00, '2024-03-30', NULL),
+(3, 'Contado', 3500.00, '2024-03-21', '2024-03-21'),
+(4, 'Credito 15 dias', 7800.00, '2024-04-05', NULL),
+(5, 'Contra entrega', 9200.00, '2024-03-30', '2024-03-30'),
+(6, 'Credito 15 dias', 15000.00, '2024-04-10', NULL),
+(7, 'Contado', 6200.00, '2024-03-24', '2024-03-24');
+
+INSERT INTO mercancia (id_cliente, id_viaje, peso_mercancia, tipo_mercancia, origen_mercancia, destino_mercancia, modalidad_entrega, estado_mercancia, fecha_registro) VALUES
+(1, 1, 50.00, 'No peligrosa', 'Merida', 'Cancun', 'Domicilio', 'Entregado', '2024-03-15'),
+(2, 2, 120.00, 'No peligrosa', 'Campeche', 'Playa del Carmen', 'Sucursal', 'En transito', '2024-03-18'),
+(3, 3, 75.00, 'No peligrosa', 'Merida', 'Chetumal', 'Domicilio', 'Entregado', '2024-03-21'),
+(4, 4, 140.00, 'No peligrosa', 'Campeche', 'Ciudad del Carmen', 'Sucursal', 'En transito', '2024-03-22'),
+(5, 5, 60.00, 'No peligrosa', 'Merida', 'Cancun', 'Domicilio', 'En bodega', '2024-03-23'),
+(6, 6, 200.00, 'No peligrosa', 'Campeche', 'Ciudad del Carmen', 'Sucursal', 'Pendiente', '2024-03-24'),
+(7, 7, 95.00, 'No peligrosa', 'Merida', 'Chetumal', 'Domicilio', 'Programado', '2024-03-25');

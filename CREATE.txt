@@ -1,0 +1,67 @@
+CREATE DATABASE bd_transporte;
+USE bd_transporte;
+
+
+CREATE TABLE cliente (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_cliente VARCHAR(100) NOT NULL,
+    telefono_cliente VARCHAR(15)
+);
+
+CREATE TABLE ruta (
+    id_ruta INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_ruta VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE unidad (
+    id_unidad INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_unidad VARCHAR(50),
+    capacidad_toneladas DECIMAL(5,2)
+);
+
+
+CREATE TABLE viaje (
+    id_viaje INT AUTO_INCREMENT PRIMARY KEY,
+    id_ruta INT NOT NULL,
+    id_unidad INT NOT NULL,
+    fecha_salida DATE,
+    estado_viaje VARCHAR(50),
+    carga_acumulada DECIMAL(8,2) CHECK (carga_acumulada <= 32.00), -- Restricción activa
+    FOREIGN KEY (id_ruta) REFERENCES ruta(id_ruta),
+    FOREIGN KEY (id_unidad) REFERENCES unidad(id_unidad)
+);
+
+CREATE TABLE pago (
+    id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    tipo_pago VARCHAR(50),
+    monto_pago DECIMAL(10,2),
+    fecha_vencimiento DATE,
+    fecha_pago DATE,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+);
+
+CREATE TABLE mercancia (
+    id_mercancia INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    id_viaje INT NOT NULL,
+    peso_mercancia DECIMAL(8,2),
+    tipo_mercancia VARCHAR(100),
+    origen_mercancia VARCHAR(100),
+    destino_mercancia VARCHAR(100),
+    modalidad_entrega VARCHAR(50),
+    estado_mercancia VARCHAR(50),
+    fecha_registro DATE,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+    FOREIGN KEY (id_viaje) REFERENCES viaje(id_viaje)
+);
+
+
+CREATE VIEW vista_adeudos_clientes AS
+SELECT 
+    c.id_cliente, 
+    c.nombre_cliente, 
+    COALESCE(SUM(p.monto_pago), 0) AS deuda_actual
+FROM cliente c
+LEFT JOIN pago p ON c.id_cliente = p.id_cliente AND p.fecha_pago IS NULL
+GROUP BY c.id_cliente, c.nombre_cliente;

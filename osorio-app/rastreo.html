@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rastrear envío · Transportadora Osorio</title>
+  <meta name="description" content="Consulta el estado de tu envío con tu código de seguimiento.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="t-wrap">
+    <div class="t-top">
+      <a class="brand" href="index.html"><span class="brand-mark"><i data-lucide="truck"></i></span><span>Transportadora Osorio<small>Rastreo de envíos</small></span></a>
+      <form class="search-pill" id="f-buscar" role="search">
+        <i data-lucide="search"></i>
+        <input name="codigo" placeholder="OSO-XXXX-XXXX" aria-label="Código de seguimiento" autocomplete="off" maxlength="13">
+        <button class="btn dark sm">Rastrear</button>
+      </form>
+    </div>
+    <main id="resultado" aria-live="polite"></main>
+  </div>
+
+  <script src="assets/vendor/lucide.min.js"></script>
+  <script src="js/nucleo.js"></script>
+  <script src="js/rastreo.js"></script>
+</body>
+</html>

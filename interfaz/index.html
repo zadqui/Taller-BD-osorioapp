@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transportadora Osorio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <div class="app">
+    <aside class="sidebar glass">
+      <div class="brand">
+        <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></div>
+        <div><b>Transportadora Osorio</b><small>Gestión logística</small></div>
+      </div>
+      <nav class="nav" id="nav"></nav>
+      <div class="progress-card">
+        <div class="row"><span>Prototipo</span><b>50 %</b></div>
+        <div class="bar"><i style="width:50%"></i></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar glass">
+        <button class="btn icon ghost menu-btn" id="menu" aria-label="Menú"></button>
+        <div><h1 id="title">Panel</h1><p id="subtitle"></p></div>
+        <div class="spacer"></div>
+        <label class="search" id="search-box"><span id="search-icon"></span><input id="search" placeholder="Buscar código, cliente o ciudad" autocomplete="off"></label>
+        <button class="btn icon ghost" id="theme" aria-label="Cambiar tema"></button>
+      </header>
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
