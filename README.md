@@ -134,6 +134,17 @@ La portada no incluye enlace al panel; utiliza directamente `login.html`.
 
 ## Documentación adicional
 
+### Publicación desde GitHub en Alwaysdata
+
+El flujo `.github/workflows/deploy-alwaysdata.yml` publica el contenido de `osorio-app/` en la cuenta `osorioapp`, dentro de `/home/osorioapp/www/`. El sitio utiliza la dirección `https://osorioapp.alwaysdata.net/`.
+
+- Requiere los secretos del repositorio `ALWAYSDATA_SSH_KEY` (clave privada de despliegue) y `ALWAYSDATA_KNOWN_HOSTS` (identidad del servidor SSH).
+- La variable del repositorio `ALWAYSDATA_READY` debe valer `true` después de configurar y comprobar la conexión a la base del hosting. Mientras no esté activa, el trabajo de despliegue se omite.
+- Publica automáticamente los cambios en `main` que afecten a la aplicación o al flujo. También se puede ejecutar desde **Actions → Publicar en Alwaysdata → Run workflow**.
+- El archivo `api/config.php` se instala por separado en el hosting y se conserva durante los despliegues. No se guarda en GitHub.
+- Los scripts SQL no se ejecutan durante el despliegue: las actualizaciones de código conservan la base existente.
+- El flujo comprueba que la API de sesión responde por HTTPS; esa comprobación no sustituye una prueba de las operaciones de MySQL.
+
 - [Guía de despliegue en hosting](osorio-app-bd/GUIA_DE_DESPLIEGUE.md).
 - [Informe de pendientes del prototipo](INFORME_PENDIENTES.md), como referencia histórica; no representa por sí solo el estado actual de `osorio-app`.
 

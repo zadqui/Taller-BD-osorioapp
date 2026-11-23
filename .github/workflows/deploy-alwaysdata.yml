@@ -1,0 +1,66 @@
+name: Publicar en Alwaysdata
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'osorio-app/**'
+      - '.github/workflows/deploy-alwaysdata.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: alwaysdata-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: vars.ALWAYSDATA_READY == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Preparar la conexion SSH
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.ALWAYSDATA_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$SSH_PRIVATE_KEY" || { echo 'Falta ALWAYSDATA_SSH_KEY'; exit 1; }
+          test -n "$SSH_KNOWN_HOSTS" || { echo 'Falta ALWAYSDATA_KNOWN_HOSTS'; exit 1; }
+          umask 077
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$RUNNER_TEMP/osorioapp_deploy"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$RUNNER_TEMP/osorioapp_known_hosts"
+
+      - name: Publicar la aplicacion
+        shell: bash
+        run: |
+          set -euo pipefail
+          rsync -az --exclude='/api/config.php' \
+            -e "ssh -i $RUNNER_TEMP/osorioapp_deploy -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/osorioapp_known_hosts" \
+            osorio-app/ osorioapp@ssh-osorioapp.alwaysdata.net:/home/osorioapp/www/
+
+      - name: Comprobar la API publicada
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 \
+            'https://osorioapp.alwaysdata.net/api/index.php?r=sesion' \
+            -o "$RUNNER_TEMP/osorioapp-session.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          response = json.loads((Path(os.environ['RUNNER_TEMP']) / 'osorioapp-session.json').read_text())
+          assert response.get('ok') is True and response.get('usuario') is None, 'La API no devolvio una sesion publica valida'
+          print('API disponible por HTTPS')
+          PY
+
+      - name: Retirar la clave temporal del runner
+        if: always()
+        shell: bash
+        run: rm -f "$RUNNER_TEMP/osorioapp_deploy" "$RUNNER_TEMP/osorioapp_known_hosts"
